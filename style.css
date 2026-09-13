@@ -1,11 +1,12 @@
 body {
-    background-image: url("background.png");
+    background-image: url("./background.png");
     background-size: cover;
-background-position: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: Arial, sans-serif;
     padding: 40px;
 }
-
 h1 {
     color: pink;
     text-align: center;
