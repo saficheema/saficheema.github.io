@@ -1,9 +1,5 @@
 body {
-    background-image: url("./background.png");
-    background-size: 100% auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: #f2f2f2;
     font-family: Arial, sans-serif;
     padding: 40px;
 }
