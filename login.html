@@ -1,0 +1,134 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheema Academy - Student Portal</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f2f2f2;
+        }
+
+        .login-box {
+            width: 350px;
+            padding: 35px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        .login-box img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #333;
+            color: white;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        #message {
+            margin-top: 15px;
+            color: #d00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <img src="logo.png" alt="Cheema Academy Logo">
+
+        <h1>Student Portal</h1>
+
+        <p>Login to access your Cheema Academy account.</p>
+
+        <input type="email" id="email" placeholder="Email">
+
+        <input type="password" id="password" placeholder="Password">
+
+        <button onclick="loginStudent()">Login</button>
+
+        <p id="message"></p>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        const supabaseUrl = "https://toweqgaxwfdelucmppor.supabase.co";
+
+        const supabaseKey = "sb_publishable_OaraYTaahP5DUfi3eOgIpQ_nmP5IJvQ";
+
+        const supabaseClient = supabase.createClient(
+            supabaseUrl,
+            supabaseKey
+        );
+
+        async function loginStudent() {
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const message = document.getElementById("message");
+
+            message.textContent = "";
+
+            const { data, error } = await supabaseClient.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+            if (error) {
+                message.textContent = error.message;
+                return;
+            }
+
+            window.location.href = "dashboard.html";
+        }
+    </script>
+
+</body>
+</html>
+```
