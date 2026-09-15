@@ -1,68 +1,683 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="icon" href="logo.png">
-    <title>Cheema Academy | Quality Education</title>
-    <meta name="description" content="My personal website built with HTML and CSS.">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+
+    <title>Cheema Academy | Student Portal</title>
+
+    <meta name="description"
+        content="Cheema Academy - Quality education, student support and digital learning.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #e6eaf0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 14px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .brand-text h2 {
+            font-size: 20px;
+            color: #123c69;
+        }
+
+        .brand-text span {
+            font-size: 12px;
+            color: #718096;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #344054;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #1769aa;
+        }
+
+        .portal-btn {
+            background: #1769aa;
+            color: white !important;
+            padding: 11px 20px;
+            border-radius: 8px;
+        }
+
+        .portal-btn:hover {
+            background: #0f4f82;
+        }
+
+        /* HERO */
+
+        .hero {
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e5f1fb;
+            color: #1769aa;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            line-height: 1.15;
+            color: #102a43;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #1769aa;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #667085;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 13px 23px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .primary-btn {
+            background: #1769aa;
+            color: white;
+        }
+
+        .secondary-btn {
+            background: white;
+            color: #1769aa;
+            border: 1px solid #d0d7e2;
+        }
+
+        .primary-btn:hover {
+            background: #0f4f82;
+        }
+
+        .secondary-btn:hover {
+            background: #f0f6fb;
+        }
+
+        /* HERO CARD */
+
+        .hero-card {
+            width: 360px;
+            min-width: 300px;
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 15px 45px rgba(16, 42, 67, 0.12);
+            text-align: center;
+        }
+
+        .hero-card img {
+            width: 130px;
+            height: 130px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .hero-card h2 {
+            color: #123c69;
+            margin-bottom: 8px;
+        }
+
+        .hero-card p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .secure {
+            background: #f4f8fc;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #52606d;
+        }
+
+        /* QUICK ACCESS */
+
+        .section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #102a43;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #718096;
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+
+.portal-card {
+    background: white;
+    padding: 28px 22px;
+    border-radius: 14px;
+    border: 1px solid #e6eaf0;
+    transition: 0.25s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+        .portal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(16, 42, 67, 0.10);
+        }
+
+        .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: #eaf4fb;
+            color: #1769aa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .portal-card h3 {
+            margin-bottom: 8px;
+            color: #123c69;
+        }
+
+        .portal-card p {
+            font-size: 14px;
+            color: #718096;
+        }
+        .portal-card small {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #1769aa;
+}
+
+        /* WHY US */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            border: 1px solid #e6eaf0;
+        }
+
+        .feature h3 {
+            color: #123c69;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 50px 25px;
+        }
+
+        .contact-box {
+            background: #123c69;
+            color: white;
+            padding: 45px;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .contact-box h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .contact-box p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .email-btn {
+            display: inline-block;
+            background: white;
+            color: #123c69;
+            padding: 12px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #0d2238;
+            color: #b8c4d1;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a:not(.portal-btn) {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 55px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .portal-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card {
+                width: 100%;
+                max-width: 360px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .nav-container {
+                padding: 10px 15px;
+            }
+
+            .brand-text span {
+                display: none;
+            }
+
+            .portal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .contact-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-    <h3>Cheema Academy</h3>
-</header>
-        <nav>
-    <a href="#about">About</a>
-    <a href="#courses">Courses</a>
-    <a href="#teachers">Teachers</a>
-    <a href="#admissions">Admissions</a>
-    <a href="#contact">Contact</a>
-    <a href="login.html">Student Portal</a>
 
-</nav>
+    <!-- NAVIGATION -->
 
-        <div class="hero">
-    <img src="logo.png" alt="Cheema Academy Logo" class="logo">
-    <h1>Welcome to Cheema Academy</h1>
-</div>
-        <h2 id="about">About Cheema Academy</h2>
+    <div class="navbar">
+        <div class="nav-container">
 
-<p>Cheema Academy is dedicated to providing quality education, guidance, and a strong learning environment for students.</p>
+            <div class="brand">
+                <img src="logo.png" alt="Cheema Academy Logo">
 
-        <p>Our mission is to help students learn, grow, and achieve their educational goals.</p>
-        <h2 id="courses">Our Courses</h2>
+                <div class="brand-text">
+                    <h2>Cheema Academy</h2>
+                    <span>Learning • Growth • Success</span>
+                </div>
+            </div>
 
-<p>We offer quality courses designed to help students improve their knowledge and skills.</p>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#portal">Portal</a>
+                <a href="#contact">Contact</a>
 
-<p>• Computer Science</p>
-<p>• Mathematics</p>
-<p>• English</p>
-<p>• Science</p>
-        <button onclick="alert('Thank you for visiting my website!')">Visit my website</button>
-        <h2 id="teachers">Our Teachers</h2>
+                <a href="login.html" class="portal-btn">
+                    Student Portal
+                </a>
+            </div>
 
-<p>Our teachers are committed to helping students understand concepts and achieve their best.</p>
-<h2 id="admissions">Admissions</h2>
-
-<p>Admissions are open for students who are ready to learn and grow with Cheema Academy.</p>
-
-<p>Contact us for admission details, course information, and class schedules.</p>
-        <h2 class="skills">Why Choose Cheema Academy?</h2>
-
-<p>Experienced Teachers • Quality Education • Student Support</p>
-
-<p>Have questions about our courses or admissions? Contact Cheema Academy and we will be happy to help.</p>
-<p>
-    <a href="mailto:yourname@example.com">Email Me</a>
-</p>
-
+        </div>
     </div>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                WELCOME TO CHEEMA ACADEMY
+            </div>
+
+            <h1>
+                Empowering Students.<br>
+                <span>Building Futures.</span>
+            </h1>
+
+            <p>
+                A modern digital platform for Cheema Academy students.
+                Access your student portal, attendance and academic
+                information in one convenient place.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="login.html" class="primary-btn">
+                    Open Student Portal
+                </a>
+
+                <a href="#contact" class="secondary-btn">
+                    Contact Academy
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <img src="logo.png" alt="Cheema Academy">
+
+            <h2>Student Portal</h2>
+
+            <p>
+                Your academic information,
+                attendance and student services.
+            </p>
+
+            <div class="secure">
+                🔒 Secure Student Access
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUICK ACCESS -->
+
+    <section class="section" id="portal">
+
+        <div class="section-title">
+
+            <h2>Student Portal</h2>
+
+            <p>
+                Everything students need in one place
+            </p>
+
+        </div>
+
+
+        <div class="portal-grid">
+
+  <a href="login.html" class="portal-card">
+
+    <div class="icon">🎓</div>
+
+    <h3>Student Login</h3>
+
+    <p>
+        Securely access your personal student dashboard.
+    </p>
+
+</a>
+
+<div class="portal-card">
+
+    <div class="icon">📊</div>
+
+    <h3>Attendance</h3>
+
+    <p>
+        View your attendance information through the student dashboard.
+    </p>
+
+    <small>Available after login</small>
+
+</div>
+
+<div class="portal-card">
+
+    <div class="icon">📝</div>
+
+    <h3>Assignments</h3>
+
+    <p>
+        Academic assignments and learning resources.
+    </p>
+
+    <small>Available after login</small>
+
+</div>
+
+
+           <div class="portal-card">
+
+    <div class="icon">📢</div>
+
+    <h3>Announcements</h3>
+
+    <p>
+        Stay updated with important academy information.
+    </p>
+
+    <small>Available after login</small>
+
+</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- WHY CHEEMA ACADEMY -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>Why Cheema Academy?</h2>
+
+            <p>
+                Focused on helping students learn and succeed.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature">
+
+                <h3>Quality Education</h3>
+
+                <p>
+                    A learning environment focused on knowledge,
+                    understanding and academic development.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <h3>Student Support</h3>
+
+                <p>
+                    Students can access important academic information
+                    through the digital student portal.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <h3>Modern Learning</h3>
+
+                <p>
+                    Technology helps make academic information
+                    easier to access and manage.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <div class="contact-box">
+
+            <h2>Have a Question?</h2>
+
+            <p>
+                Contact Cheema Academy for information about
+                students, courses or academy services.
+            </p>
+
+            <a href="mailto:cheemasafi25@gmail.com" class="email-btn">
+                Contact Cheema Academy
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
     <footer>
-    <p>© 2026 My First Website. All rights reserved.</p>
-</footer>
+
+        <p>
+            © 2026 Cheema Academy. All rights reserved.
+        </p>
+
+    </footer>
 
 </body>
 
