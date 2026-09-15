@@ -87,7 +87,7 @@
 
         <input type="text" id="username" placeholder="Username" required>
 
-        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="password" placeholder="Password" required>
 
         <button onclick="loginStudent()">Login</button>
 
@@ -113,20 +113,20 @@
     const message = document.getElementById("message");
 
     // Find the student's email using their username
-    const { data: student, error: studentError } = await supabaseClient
-        .from("students")
-        .select("email")
-        .eq("username", username)
-        .single();
+  const { data: studentEmail, error: studentError } =
+    await supabaseClient.rpc("get_student_email", {
+        student_username: username
+    });
 
-    if (studentError || !student) {
-        message.textContent = "Username not found.";
-        return;
-    }
+if (studentError || !studentEmail) {
+    message.textContent = "Username not found.";
+    console.error(studentError);
+    return;
+}
 
     // Login to Supabase using the student's email
     const { error } = await supabaseClient.auth.signInWithPassword({
-        email: student.email,
+       email: studentEmail,
         password: password
     });
 
