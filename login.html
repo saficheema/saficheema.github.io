@@ -85,7 +85,7 @@
 
         <p>Login to access your Cheema Academy account.</p>
 
-        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="username" placeholder="Username" required>
 
         <input type="password" id="password" placeholder="Password">
 
@@ -107,26 +107,36 @@
             supabaseKey
         );
 
-        async function loginStudent() {
+       async function loginStudent() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const message = document.getElementById("message");
 
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const message = document.getElementById("message");
+    // Find the student's email using their username
+    const { data: student, error: studentError } = await supabaseClient
+        .from("students")
+        .select("email")
+        .eq("username", username)
+        .single();
 
-            message.textContent = "";
+    if (studentError || !student) {
+        message.textContent = "Username not found.";
+        return;
+    }
 
-            const { data, error } = await supabaseClient.auth.signInWithPassword({
-                email: email,
-                password: password
-            });
+    // Login to Supabase using the student's email
+    const { error } = await supabaseClient.auth.signInWithPassword({
+        email: student.email,
+        password: password
+    });
 
-            if (error) {
-                message.textContent = error.message;
-                return;
-            }
+    if (error) {
+        message.textContent = error.message;
+        return;
+    }
 
-            window.location.href = "dashboard.html";
-        }
+    window.location.href = "dashboard.html";
+}
     </script>
 
 </body>
